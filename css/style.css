@@ -226,14 +226,18 @@ form {
   margin-bottom: 10px;
   color: var(--title-text-color);
 }
-.form-field input {
-  margin: 0;
-  padding: 0;
-  padding-left: 42px;
+.form-input {
   height: 40px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   cursor: pointer;
+  outline: none;
+  padding-right: 10px;
+  padding-left: 42px;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .form-icon {
   position: absolute;
@@ -241,11 +245,23 @@ form {
   left: 15px;
   fill: currentcolor;
 
-  ransition-property: color;
+  transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.textarea {
+  outline: none;
 
+  transition-property: border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.textarea:hover,
+.textarea:focus,
+.form-input:hover,
+.form-input:focus {
+  border: 1px solid var(--acent-color);
+}
 .form-input:hover ~ .form-icon,
 .form-input:focus ~ .form-icon {
   color: var(--acent-color);
@@ -279,6 +295,30 @@ form {
   color: var(--primery-text-color);
   margin-right: auto;
   margin-bottom: 4px;
+}
+.form-check {
+  display: flex;
+  align-items: center;
+}
+.icon-check {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  margin-right: 7px;
+  border: 2px solid var(--title-text-color);
+  border-radius: 2px;
+}
+.checkbox {
+  appearance: none;
+  position: absolute;
+}
+.checkbox:checked + .icon-check {
+  border: 1px solid var(--acent-color);
+  background-color: var(--acent-color);
+  background-image: url("../img/check.svg");
+  background-size: contain;
+  background-position: center;
+  background-origin: border-box;
 }
 .form-contract {
   text-decoration-skip-ink: none;
@@ -340,6 +380,10 @@ textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-close:hover,
 .button-close:focus {
@@ -697,7 +741,8 @@ footer {
 .button-mailing {
   width: 200px;
   height: 50px;
-  background: #2196f3;
+  padding: 10px 29px;
+  background: var(--acent-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   font-weight: bold;
